@@ -15,8 +15,21 @@ body{
 .led{
     width: 50px;
     height: 50px;
+    padding: 10px;
+    margin: 10px;
     background-color: rgb(255, 0, 0);
 }
 .ligado{
     background-color: green;
+}
+button{
+    padding: 5px;
+    margin: 10px;
+    
+}
+#botOn{
+    background-color: green;
+}
+#botOff{
+    background-color: red;
 }

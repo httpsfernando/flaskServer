@@ -31,6 +31,11 @@ def estado():
         return jsonify({
             'estadoled': True
         })
+    if estadoled == 'off':
+        return jsonify({
+            'estadoled': False
+        })
+
 
 
 if __name__ == "__main__":

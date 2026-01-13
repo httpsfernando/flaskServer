@@ -16,27 +16,29 @@
     <body>
         <h1>Controle Totem</h1>
         
-        <button onclick="ligar()">ON</button>
+        <button onclick="alterar(this)" id="botOn" value="on">ON</button>
         
-        <form id="form2" method="get">
-            <button type="submit">OFF</button>
-        </form>
+        
+        <button onclick="alterar(this)" id="botOff" value="off">OFF</button>
+        
 
         <div id="led" class="led">LED</div>
 
-        <div id="box"class="caixa"></div>
+        
 
-        <button onclick="enviarServidor()">Mudar cor</button>
+        
 
         <script>
-            function ligar(){
+            function alterar(botao){
+
+                const estado = botao.value
                 fetch('/led',{
                     method: 'POST',
                     headers: {
                         'Content-Type' : 'application/json'
                     },
                     body: JSON.stringify({
-                        led: 'on'
+                        led: estado
                     })
                 })
                 .then(response => response.json())
@@ -45,49 +47,13 @@
 
                     if (data.estadoled){
                         divled.classList.add('ligado');
-                    } else {
+                    } 
+                    if  (!(data.estadoled)){
                         divled.classList.remove('ligado')
                     }
 
                 });
             }
-            function enviarServidor() {
-            fetch('/acao', {
-                method: 'POST'
-            })
-            .then(response => response.json())
-            .then(data => {
-                const box = document.getElementById('box');
-
-                if (data.ativa) {
-                    box.classList.add('ativa');
-                } else {
-                    box.classList.remove('ativa');
-                }
-            });
-        }
-            document.getElementById("form1").addEventListener("submit", function (e) {
-                e.preventDefault();
-                fetch("/status?statusled=on")
-                .then(response => response.text())
-                .then(data => {
-                 console.log("Resposta do servidor:", data);
-             });
-         });   
-            document.getElementById("form2").addEventListener("submit", function (e) {
-                e.preventDefault();
-                fetch("/status?statusled=off")
-                .then(response => response.text())
-                .then(data => {
-                 console.log("Resposta do servidor:", data);
-             });
-         });
-
-              fetch("/status")
-                .then(r => r.json())
-                .then(data => {
-                document.body.style.backgroundColor = data.cor;
-        });
         </script>
     </body>
 </html>
