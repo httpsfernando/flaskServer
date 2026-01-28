@@ -1,7 +1,14 @@
-body{
-    background-color: rgb(0, 107, 207);
-    margin-left: 40px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+body{
+    background-color: rgb(30, 74, 218);
+    
+}
+
 
 .caixa{
    width: 200px;
@@ -17,10 +24,32 @@ body{
     height: 50px;
     padding: 10px;
     margin: 10px;
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(247, 56, 56);
 }
 .ligado{
-    background-color: green;
+    background-color: rgb(29, 139, 29);
+}
+
+.menu{
+    background-color: white;
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.menu h1{
+    margin: 0;
+    flex-grow:1;
+}
+
+.menu-imagem{
+    height: 40px;
+    width: auto;
 }
 button{
     padding: 5px;
@@ -28,8 +57,8 @@ button{
     
 }
 #botOn{
-    background-color: green;
+    background-color: rgb(29, 139, 29);
 }
 #botOff{
-    background-color: red;
+    background-color: rgb(221, 44, 44);
 }
